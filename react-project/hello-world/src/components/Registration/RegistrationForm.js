@@ -10,12 +10,14 @@ export default class RegistrationForm extends Component {
 	handlerChange(val,val2,e){
 		if(e.target.value == ''){
 			var l = document.getElementById(val)
+			console.log(l.value)
 			l.style.border='solid'
 			l.style.borderColor='red'
 			var b = document.getElementById('registerButton')
 			b.disabled=true
 		}else{
 			var l = document.getElementById(val)
+			console.log(l.value)
 			l.style.border='none'
 			var b = document.getElementById('registerButton')
 			var login = document.getElementById('login')

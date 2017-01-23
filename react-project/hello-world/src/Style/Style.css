@@ -127,7 +127,6 @@ input[type=radio]{
 }
 
 #Layout{
-  position: relative;
   background: url('../Image/background.png') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -141,9 +140,8 @@ input[type=radio]{
     overflow:hidden;
     z-index:-1; 
 }
-#Layout:after{
 
-}
+
 
 #Registration{
   background: url('../Image/background.png') no-repeat center center fixed; 
@@ -160,13 +158,15 @@ input[type=radio]{
     z-index:-1; 
 }
 
-html{ 
+html{
     min-height:100%;/* make sure it is at least as tall as the viewport */
     position:relative;
 }
 
 body{
     height:100%; /* force the BODY element to match the height of the HTML element */
+    padding: 0;
+    margin: 0;
 }
 
 .facebookButton {
@@ -203,7 +203,7 @@ display: inline-block;
   bottom: 0;
   left: 0;
   background-color: #e3effd;
-  height:10%
+  height:8%
 }
 
 #user{
@@ -277,12 +277,106 @@ display: inline-block;
   opacity: 1.0
 }
 
-ul li img {
-    max-width: 100%;
-    height: auto;      
+ul{
+  height:670px;
+ width:100%;
+ padding: 0;
+ margin:0;
+overflow-y:scroll;
+text-align: center;
+background-color: #e7effe;
+margin-before: 1em;
+margin-after: 1em;
+margin-start: 0;
+margin-end: 0;
 }
 
- ul{height:600px; width:100%;}
-ul{overflow:hidden; overflow-y:scroll;}
+li{
+  list-style: none;
+  margin-top: 15px;
+  margin-bottom: 2px;
+}
+#topUserInfo img{
+  max-width: 30px;
+  max-height: 30px;
+  margin-left: 20px;
+  float: left;
+}
+#topUserInfo{
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 5px;
+  padding-top: 0;
+  height: 30px;
+  width: 100%;
+}
+
+#topUserInfo h4{
+  font-size: 20px;
+  padding: 0;
+  margin-top:5px;
+}
+
+#challangePhoto img{
+  max-width: 100%;
+}
+
+#list{
+  width: 100%;
+}
+
+#takePart{
+  margin-left:5px;
+  min-width: 32px;
+  min-height: 32px;
+  background-color: #e3effd;
+  background-image: url('../Image/takePart.png') ;
+  border:none;
+  float: left;
+  display: block;
+}
+
+#comment{
+  margin-left:5px;
+  min-width: 32px;
+  min-height: 32px;
+  background-color: #e3effd;
+  background-image: url('../Image/comments.png');
+  border:none;
+  float: left;
+  display: block;
+}
+
+#like{
+  margin-left:5px;
+  min-width: 32px;
+  min-height: 32px;
+  background-image: url('../Image/like.png');
+  background-color: #e3effd;
+  border:none;
+  float: left;
+  display: block;
+}
+
+#activePanel{
+  height: 32px;
+  width: 100%;
+  margin-top:5px;
+  background-color: #e3effd;
+  padding-bottom: 5px;
+  border-bottom: dotted #5EA5F7;
+  border-width:1px;
+}
+
+#descriptions h4 a {
+  float: left;
+  text-decoration: none;
+  color:black;
+}
+
+#descriptions {
+  height: 40px;
+}
+
 
 

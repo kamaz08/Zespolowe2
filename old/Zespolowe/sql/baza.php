@@ -3,9 +3,9 @@ class Baza{
 	function __construct(){ 
 		$servername = "localhost";
 		$username = "root";
-		$password = "foxikrl";
+		$password = "1234";
 		$dbname = "events";
-		$conn = new mysqli($servername, $username, $password, $dbname, '3308');
+		$conn = new mysqli($servername, $username, $password, $dbname);
 		if ($conn->connect_error) {
 			die("Connection failed: " . $conn->connect_error);
 		}	 
@@ -139,7 +139,7 @@ class Baza{
 	}
 
 	function getSingleEvent($id){
-		return $this->DB->query("SELECT event.uzytkownik_id, uzytkownik.login, event.opis, event.foto_url, event.data_zakonczenia FROM event, uzytkownik WHERE event.id = ".$id." AND event.uzytkownik_id = uzytkownik.id");
+		return $this->DB->query("SELECT event.uzytkownik_id, uzytkownik.login, event.opis, event.foto_url, event.data_zakonczenia, event.czy_zakonczone, event.czy_rozdane FROM event, uzytkownik WHERE event.id = ".$id." AND event.uzytkownik_id = uzytkownik.id");
 	}
 
 	function getApplies($id){
@@ -147,7 +147,7 @@ class Baza{
 	}
 
 	function refreshDatabase(){
-		return $this->DB->query("UPDATE event SET czy_zakonczone = 1 WHERE DATE(NOW()) > DATE(data_zakonczenia)");
+		return $this->DB->query("UPDATE event SET czy_zakonczone = 1 WHERE NOW() > data_zakonczenia");
 	}
 		
 }

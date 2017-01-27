@@ -1,6 +1,10 @@
 <?php	
 	require_once("sesja.php");
 	require_once("helpers/basic.php");
+	if($_POST['uzytkownik_id'] == $_SESSION['id'])
+	{
+		header("Location: twojprofil.php");
+	}
 $HEADER = 
 <<<EOT
 <html>
@@ -26,16 +30,16 @@ EOT;
 
 $TWOJE = <<<EOT
 <div class='grupuj' id='gr'>
-	<p>Stworzone wydarzenia</p>
+	<p>Stworzone wydarzenia przez {{USER}}</p>
 	{{TWOJE}}
 </div>
 EOT;
 
 $UDZIAL = <<<EOT
 <div class='grupuj' id='ud'>
-	<p>Wydarzenia w których bierzesz udział</p>
+	<p>Wydarzenia w których {{USER}} bierze udział</p>
 {{UDZIAL}}
-	<br>
+<br>
 </div>
 EOT;
 
@@ -45,16 +49,18 @@ $B = new Baza();
 $points = $B->getPoints($_SESSION['id']);
 
 echo (string) str_replace("{{POINTS}}", (string) $points,  $HEADER);
-
-echo $paneldolny;
+echo $paneldolny; 
 
 $B->refreshDatabase();
 
-$result=$B->getEventsStworzonychList($_SESSION['id']);
+$TWOJE = (string) str_replace("{{USER}}", (string) $_POST['user_view'],  $TWOJE);
+$UDZIAL = (string) str_replace("{{USER}}", (string) $_POST['user_view'],  $UDZIAL);
+
+$result=$B->getEventsStworzonychList($_POST['uzytkownik_id']);
 $ALLYOUR = generateWydarzenia($result);
 echo (string) str_replace("{{TWOJE}}", (string) $ALLYOUR,  $TWOJE);
 
-$result=$B->getEventsUdzialList($_SESSION['id']);
+$result=$B->getEventsUdzialList($_POST['uzytkownik_id']);
 $ALLYOUR = generateWydarzenia($result);
 echo (string) str_replace("{{UDZIAL}}", (string) $ALLYOUR,  $UDZIAL);
 

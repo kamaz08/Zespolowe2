@@ -14,10 +14,10 @@ $HEADER =
 	    <a href="http://localhost/pz/Event/Zespolowe2/old/Zespolowe/wyloguj.php"><img id="logout" src="./img/logout.png"></a>
 	    <img src="./img/logo.png">
   	</div>
-  	<br><br><br>
+  	<br>
 	<div class='strona'>
 		<div class='grupuj' id='ud'>
-			<p>Stwórz event</p>
+			<p>Dodaj swoje zgłoszenie</p>
 			<div class='logowanie'>
 			{{FORM}}
 			</div>
@@ -29,12 +29,11 @@ $FORM1 = <<<EOT
 
 EOT;
 $FORM2 = <<<EOT
-				<form method="POST" action="utworzevent.php" id="usrform" enctype="multipart/form-data">
-					<p><b>#Tag(maksymalnie 3):</b></p><input type="text" name="tag">
-					<p><b>Data zakończenia:</b></p><input type="datetime-local" name="datazak">
-					<p><b>Opis:</b></p><textarea class='text' rows="4" cols="50" name="opis" form="usrform" ></textarea>
+				<form method="POST" action="zglos.php" id="usrform" enctype="multipart/form-data">
 					<input type="file" accept="image/*|video/*" capture="camera" name="zdjecie">
-					<input class='button'  type="submit" value="Utwórz" name="utworz">
+					<p><b>Komentarz:</b></p><input type="text" name="comment">
+					<input type="hidden" value="{{IDEVENT}} "name="eventid">
+					<input class='button'  type="submit" value="Dodaj" name="dodaj">
 				</form>
 EOT;
 $FOOTER = <<<EOT
@@ -46,7 +45,7 @@ EOT;
 require_once("sql/baza.php");
 $B = new Baza();
 
-if(isset($_POST['utworz'])){
+if(isset($_POST['dodaj'])){
 	$image = $_FILES['zdjecie'];
     $imagename = $_FILES['zdjecie']['name'];
     $imagetype = $_FILES['zdjecie']['type'];
@@ -70,8 +69,8 @@ if(isset($_POST['utworz'])){
 		else {
 			echo "Failed to upload your image.";
 		}
-		
-		$x = $B->stworzEvent($_SESSION['id'], $_POST['tag'], $_POST['datazak'],$_POST['opis'],$imagePath.$imagename, null);
+
+		$x = $B->dodajZgloszenie($_SESSION['id'], $_POST['eventid'], $_POST['comment'], date('Y-m-d H:i:s'),$imagePath.$imagename);
 		
 		header("Location: twojprofil.php");
 	}else{
@@ -79,8 +78,11 @@ if(isset($_POST['utworz'])){
 	}
 	
 }
+$FORM2 = (string) str_replace("{{IDEVENT}}", (string) $_POST['idevent'],  $FORM2);
+
 
 $HEADER = (string) str_replace("{{FORM}}", (string) $FORM2,  $HEADER);
+
 $points = $B->getPoints($_SESSION['id']);
 
 echo (string) str_replace("{{POINTS}}", (string) $points,  $HEADER);

@@ -14,7 +14,7 @@ $HEADER =
 	    <a href="http://localhost/pz/Event/Zespolowe2/old/Zespolowe/wyloguj.php"><img id="logout" src="./img/logout.png"></a>
 	    <img src="./img/logo.png">
   	</div>
-  	<br>
+  	<br><br><br>
 	<div class='strona'>
 EOT;
 
@@ -24,18 +24,10 @@ $FOOTER = <<<EOT
 </html>
 EOT;
 
-$TWOJE = <<<EOT
+$HTAG = <<<EOT
 <div class='grupuj' id='gr'>
-	<p>Stworzone wydarzenia</p>
-	{{TWOJE}}
-</div>
-EOT;
-
-$UDZIAL = <<<EOT
-<div class='grupuj' id='ud'>
-	<p>Wydarzenia w których bierzesz udział</p>
-{{UDZIAL}}
-	<br>
+	<p>Obserwowane #tagi</p>
+	{{HTAG}}
 </div>
 EOT;
 
@@ -48,16 +40,21 @@ echo (string) str_replace("{{POINTS}}", (string) $points,  $HEADER);
 
 echo $paneldolny;
 
+$eventID = "";
+if(isset($_GET['id']))
+{
+	$eventID = $_GET['id'];
+}
+else
+{
+	$eventID = $_POST['idevent'];
+}
+
 $B->refreshDatabase();
 
-$result=$B->getEventsStworzonychList($_SESSION['id']);
-$ALLYOUR = generateWydarzenia($result);
-echo (string) str_replace("{{TWOJE}}", (string) $ALLYOUR,  $TWOJE);
+$result=$B->getSingleEvent($eventID);
+$eventView = generujWydarzenie($result,$eventID);
 
-$result=$B->getEventsUdzialList($_SESSION['id']);
-$ALLYOUR = generateWydarzenia($result);
-echo (string) str_replace("{{UDZIAL}}", (string) $ALLYOUR,  $UDZIAL);
-
-
+echo $eventView;
 echo $FOOTER;
 ?>	

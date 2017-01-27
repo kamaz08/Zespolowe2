@@ -9,6 +9,12 @@ $HEADER =
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 </head>
 <body>
+	<div id="bar">
+		<div id="points">{{POINTS}}&#9819;</div>
+	    <a href="http://localhost/pz/Event/Zespolowe2/old/Zespolowe/wyloguj.php"><img id="logout" src="./img/logout.png"></a>
+	    <img src="./img/logo.png">
+  	</div>
+  	<br><br><br><br>
 	<div class='strona'>
 EOT;
 
@@ -31,15 +37,20 @@ $UDZIAL = <<<EOT
 {{UDZIAL}}
 </div>
 EOT;
+
 require_once("sql/baza.php");
 $B = new Baza(); 
+
+$B->refreshDatabase();
+
 if(isset($_POST['dodaj'])){
 	$B->joinUsetToTag($_SESSION['id'],$_POST['tag']);
 }
 
+$points = $B->getPoints($_SESSION['id']);
 
+echo (string) str_replace("{{POINTS}}", (string) $points,  $HEADER);
 
-echo $HEADER;
 echo $paneldolny;
 
 $result=$B->getWolneTagi($_SESSION['id']);

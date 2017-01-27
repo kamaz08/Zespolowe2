@@ -10,12 +10,13 @@ $HEADER =
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 </head>
 <body>
-	<div id="bar">
-		<div id="points">{{POINTS}}&#9819;</div>
-	    <a href="./wyloguj.php"><img id="logout" src="./img/logout.png"></a>
-	    <img src="./img/logo.png">
-  	</div>
-	<div class='strona'>
+<div class='strona'>
+	<div class='panelgorny'>
+		<div id="points"><img src="img/korona.png"/>{{POINTS}}</div>
+		<div style="width: 50%;"><img src="./img/logo.png"/></div>
+		<div><a href='./wyloguj.php'><img src="./img/logout.png"/></a></div>
+	</div>
+	
 EOT;
 
 $FOOTER = <<<EOT

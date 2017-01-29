@@ -3,7 +3,7 @@ class Baza{
 	function __construct(){ 
 		$servername = "localhost";
 		$username = "root";
-		$password = "1234";
+		$password = "";
 		$dbname = "events";
 		$conn = new mysqli($servername, $username, $password, $dbname);
 		if ($conn->connect_error) {

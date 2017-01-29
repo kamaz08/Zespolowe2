@@ -4,10 +4,11 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 </head>
 <body>
+	<header>Events</header>
 	<div class='strona'>
 	<div class='logowanie'>
 		<form method="POST" action="logowanie.php">
-		<p>Zaloguj się do portalu</p>
+		<h3>Zaloguj się do portalu</h3>
 		<p><b>Login:</b></p><input type="text" name="login">
 		<p><b>Hasło:</b></p><input type="password" name="haslo">
 		<input class='button'  type="submit" value="Zaloguj" name="zalogujsie">

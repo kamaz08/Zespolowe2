@@ -63,7 +63,7 @@ EOT;
 
 	$servername = "localhost";
 		$username = "root";
-		$password = "1234";
+		$password = "";
 		$dbname = "events";
 		$conn = new mysqli($servername, $username, $password, $dbname);
 	$ALL = "";
@@ -145,7 +145,7 @@ function generujWydarzenie($one_row,$eventID)
 
 	$servername = "localhost";
 		$username = "root";
-		$password = "1234";
+		$password = "";
 		$dbname = "events";
 		$conn = new mysqli($servername, $username, $password, $dbname);	
 
@@ -347,7 +347,7 @@ function generujListeDecyzji($rows,$eventID)
 
 	$servername = "localhost";
 		$username = "root";
-		$password = "1234";
+		$password = "";
 		$dbname = "events";
 		$conn = new mysqli($servername, $username, $password, $dbname);
 		

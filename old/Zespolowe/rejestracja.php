@@ -5,6 +5,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 </head>
 <body>
+	<header>Events</header>
 	<div class='strona'>
 	<div class='logowanie'>
 		<form method="POST" action="rejestracja.php">
@@ -14,7 +15,8 @@
 			<p><b>Potwierdź hasło:</b></p><input type="password" name="haslo2">
 			<p><b>#Tagi:</b></p><input type="text" name="tagi">
 			<p><b>Facebook link</b></p><input type="text" name="facebooklink">
-			<p><b>Typ konta</b></p><input type="radio" name="typ" value="1" checked style='width:25%'><b>Publiczne</b>
+			<p><b>Typ konta</b></p>
+			<input type="radio" name="typ" value="1" checked style='width:25%'><b>Publiczne</b></br>
 			<input type="radio" name="typ" value="0" style='width:25%'><b>Prywatne</b><br><br>
 			<input class='button'  type="submit" value="Rejestruj" name="rejestruj">
 		</form>

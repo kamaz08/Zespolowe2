@@ -1,0 +1,13 @@
+v 3
+file . "Xand_tb.vhd" "20170309114151.000" "20170309124152.886":
+  entity xand_tb at 1( 0) + 0 on 43;
+  architecture behavior of xand_tb at 8( 104) + 0 on 44;
+file . "example_tb.vhd" "20170309111252.000" "20170309121301.126":
+  entity example_tb at 1( 0) + 0 on 27;
+  architecture behavior of example_tb at 12( 207) + 0 on 28;
+file . "Xand.vhd" "20170308082304.000" "20170309123404.518":
+  entity xand at 1( 0) + 0 on 29;
+  architecture behavioral of xand at 15( 290) + 0 on 30;
+file . "example.vhd" "20170309104340.000" "20170309114349.842":
+  entity example at 1( 0) + 0 on 13;
+  architecture synthetic of example at 12( 135) + 0 on 14;

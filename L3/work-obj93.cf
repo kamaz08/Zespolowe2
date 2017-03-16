@@ -1,0 +1,13 @@
+v 3
+file . "twoway_tb.vhd" "20170316113224.000" "20170316123229.517":
+  entity twoway_tb at 1( 0) + 0 on 41;
+  architecture behavior of twoway_tb at 8( 108) + 0 on 42;
+file . "simple_tb.vhd" "20170316111349.000" "20170316121355.277":
+  entity simple_tb at 1( 0) + 0 on 33;
+  architecture behavior of simple_tb at 8( 108) + 0 on 34;
+file . "simple.vhd" "20170314195604.000" "20170316114107.948":
+  entity simple at 12( 387) + 0 on 15;
+  architecture simple_counter_arch of simple at 26( 737) + 0 on 16;
+file . "twoway.vhd" "20170314183346.000" "20170316121951.837":
+  entity twoway at 1( 0) + 0 on 35;
+  architecture behavioral of twoway at 13( 272) + 0 on 36;
